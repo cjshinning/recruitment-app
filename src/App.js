@@ -29,13 +29,19 @@ class Yiying extends React.Component{
     }
     // this.addSolder = this.addSolder.bind(this)
   }
+  componentWillMount(){
+    console.log('组件将要被加载')
+  }
+  componentDidMount(){
+    console.log('组件加载完成')
+  }
   addSolder(){
-    console.log('hello add solder')
     this.setState({
       solders: [...this.state.solders, '新兵蛋子'+ Math.random()]
     })
   }
   render(){
+    console.log('组件正在加载')
     return (
       <div>
         <h2>一营营长{this.props.laoda}</h2>
