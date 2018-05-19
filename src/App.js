@@ -27,11 +27,19 @@ class Yiying extends React.Component{
         '王根生'
       ]
     }
+    // this.addSolder = this.addSolder.bind(this)
+  }
+  addSolder(){
+    console.log('hello add solder')
+    this.setState({
+      solders: [...this.state.solders, '新兵蛋子'+ Math.random()]
+    })
   }
   render(){
     return (
       <div>
         <h2>一营营长{this.props.laoda}</h2>
+        <button onClick={()=>this.addSolder()}>新兵入伍</button>
         <ul>
           {this.state.solders.map(v=>{
             return <li key={v}>{v}</li>
