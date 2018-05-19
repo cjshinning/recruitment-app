@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {createStore} from 'redux'
+import React from 'react'
 
-class App extends Component {
-  render() {
+class App extends React.Component{
+  render(){
+    let boss = '李云龙'
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h2>独立团，团长是{boss}</h2>
+        <Yiying></Yiying>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+class Yiying extends React.Component{
+  render(){
+    const boss = '张大喵'
+    return <h2>一营营长{boss}</h2>
+  }
+}
+
+export default App 
