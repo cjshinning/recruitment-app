@@ -2,8 +2,36 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 // 链接mongo
+const DB_URL = 'mongodb://localhost:27017'
+mongoose.connect(DB_URL)
+mongoose.connection.on('connected', function(){
+    console.log('mongo connect success')
+})
+// 类似与mysql的表
+const User = mongoose.model('user', new mongoose.Schema({
+    user: {type: String, required: true},
+    age: {type: Number, required: true}
+}))
+// 新增数据
+// User.create({
+//     user: 'xiaohua',
+//     age: 10
+// }, function(err, doc){
+//     if(!err){
+//         console.log(doc)
+//     }else{
+//         console.log(err)
+//     }
+// })
 
 // 新建app
+// User.remove({age: 18}, function(err, doc){
+//     console.log(doc)
+// })
+User.update({user: 'xiaoming'}, {'$set': {age: 26}}, function(err,doc){
+    console.log(doc)
+})
+
 const app = express()
 
 app.get('/', function(req,res){
@@ -11,7 +39,9 @@ app.get('/', function(req,res){
 })
 
 app.get('/data', function(req,res){
-    res.send({name: 'imooc React app', type: 'IT'})
+    User.findOne({user: 'xiaoming'}, function(err, doc){
+        res.json(doc)
+    })
 })
 
 app.listen(9093, function(){
