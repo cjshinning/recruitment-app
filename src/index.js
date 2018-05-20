@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom'
 import {createStore,applyMiddleware,compose} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
-import {BrowserRouter,Link,Route} from 'react-router-dom'
+import {
+    BrowserRouter,
+    Link,
+    Route,
+    Redirect,
+    Switch
+} from 'react-router-dom'
 import App from './App'
 import {counter,addGun,removeGun,addGunAsync} from './index.redux'
 
@@ -18,6 +24,14 @@ function Erying(){
 
 function Qibinglian(){
     return <h1>骑兵连</h1>
+}
+
+class Test extends React.Component{
+    render(){
+        console.log(this.props)
+        // this.props.history.push('/')
+        return <h2>测试组件 {this.props.match.params.location}</h2>
+    }
 }
 
 ReactDOM.render((
@@ -35,9 +49,14 @@ ReactDOM.render((
                         <Link to="/qibinglian">骑兵连</Link>
                     </li>
                 </ul>
-                <Route path="/" exact component={App}></Route>
-                <Route path="/erying" component={Erying}></Route>
-                <Route path="/qibinglian" component={Qibinglian}></Route>
+                {/* <Redirect to="/qibinglian"></Redirect> */}
+                <Switch>
+                    {/* 只渲染命中的第一个Route */}
+                    <Route path="/" exact component={App}></Route>
+                    <Route path="/erying" component={Erying}></Route>
+                    <Route path="/qibinglian" component={Qibinglian}></Route>
+                    <Route path="/:location" component={Test}></Route>
+                </Switch>
             </div>
         </BrowserRouter>
     </Provider>
