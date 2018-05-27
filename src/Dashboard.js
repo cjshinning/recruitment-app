@@ -1,0 +1,46 @@
+import React from 'react'
+import {
+    BrowserRouter,
+    Link,
+    Route,
+    Redirect,
+    Switch
+} from 'react-router-dom'
+import App from './App'
+
+function Erying(){
+    return <h1>二营</h1>
+}
+
+function Qibinglian(){
+    return <h1>骑兵连</h1>
+}
+
+class Dashboard extends React.Component{
+    constructor(){
+        super()
+    }
+    render(){
+        return (
+            
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/dashboard/">一营</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard/erying">二营</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard/qibinglian">骑兵连</Link>
+                    </li>
+                </ul>
+                <Route exact path="/dashboard/" component={App}></Route>
+                <Route path="/dashboard/erying" component={Erying}></Route>
+                <Route path="/dashboard/qibinglian" component={Qibinglian}></Route>
+            </div>
+        )
+    }
+}
+
+export default Dashboard

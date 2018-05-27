@@ -9,14 +9,11 @@ import {addGun,removeGun,addGunAsync} from './index.redux'
 
 // App = connect(mapStateToProps, actionCreator)(App)
 @connect(
-    // 你要state什么属性，放到props里
     state => ({num: state}),
-    // 你要什么方法放到，放到属性里面，可以自动dispatch
     {addGun,removeGun,addGunAsync}
 )
 
 class App extends React.Component{
-
     render(){
         return (
             <div>
@@ -31,3 +28,4 @@ class App extends React.Component{
 
 
 export default App
+

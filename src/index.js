@@ -11,7 +11,9 @@ import {
     Switch
 } from 'react-router-dom'
 import App from './App'
-import {counter,addGun,removeGun,addGunAsync} from './index.redux'
+import {counter} from './index.redux'
+import Auth from './Auth'
+import Dashboard from './Dashboard'
 
 const store = createStore(counter, compose(
     applyMiddleware(thunk),
@@ -34,30 +36,23 @@ class Test extends React.Component{
     }
 }
 
+// 登录
+//     没有登录信息 统一跳转到login
+// 页面     导航+显示+注销
+//     一营
+//     二营
+//     骑兵连
+// router+redux
+
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/">一营</Link>
-                    </li>
-                    <li>
-                        <Link to="/erying">二营</Link>
-                    </li>
-                    <li>
-                        <Link to="/qibinglian">骑兵连</Link>
-                    </li>
-                </ul>
-                {/* <Redirect to="/qibinglian"></Redirect> */}
-                <Switch>
-                    {/* 只渲染命中的第一个Route */}
-                    <Route path="/" exact component={App}></Route>
-                    <Route path="/erying" component={Erying}></Route>
-                    <Route path="/qibinglian" component={Qibinglian}></Route>
-                    <Route path="/:location" component={Test}></Route>
-                </Switch>
-            </div>
+            <Switch>
+                {/* 只渲染命中的第一个Route */}
+                <Route path="/login" exact component={Auth}></Route>
+                <Route path="/dashboard" component={Dashboard}></Route>
+                <Redirect to="/dashboard"></Redirect>
+            </Switch>
         </BrowserRouter>
     </Provider>
 ), document.getElementById('root'))
