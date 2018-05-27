@@ -5,9 +5,9 @@ const REMOVE_GUN = '减机关枪'
 // reducer
 export function counter(state=10, action){
     switch(action.type){
-        case 'ADD_GUN':
+        case ADD_GUN:
             return state + 1
-        case 'REMOVE_GUN':
+        case REMOVE_GUN:
             return state - 1
         default:
             return state

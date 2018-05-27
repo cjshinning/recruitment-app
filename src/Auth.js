@@ -9,9 +9,6 @@ import {login} from './Auth.redux'
 )
 
 class Auth extends React.Component{
-    constructor(){
-        super()
-    }
     render(){
         return (
             <div>
