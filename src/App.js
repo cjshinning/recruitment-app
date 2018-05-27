@@ -9,7 +9,7 @@ import {addGun,removeGun,addGunAsync} from './index.redux'
 
 // App = connect(mapStateToProps, actionCreator)(App)
 @connect(
-    state => ({num: state}),
+    state => ({num: state.counter}),
     {addGun,removeGun,addGunAsync}
 )
 
