@@ -17,7 +17,7 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     window.devToolsExtension?window.devToolsExtension():()=>{}
 ))
-console.log(store.getState())
+// console.log(store.getState())
 
 // 登录
 //     没有登录信息 统一跳转到login
