@@ -10,8 +10,9 @@ import {
     Switch
 } from 'react-router-dom'
 import reducers from './reducer'
-import Auth from './Auth'
-import Dashboard from './Dashboard'
+import Login from './container/login/login'
+import Register from './container/register/register'
+import AuthRoute from './component/authroute/authroute'
 import './config'
 
 const store = createStore(reducers, compose(
@@ -20,23 +21,18 @@ const store = createStore(reducers, compose(
 ))
 // console.log(store.getState())
 
-// 登录
-//     没有登录信息 统一跳转到login
-// 页面     导航+显示+注销
-//     一营
-//     二营
-//     骑兵连
-// router+redux
-
+function Boss(){
+    return <h2>boss页面</h2>
+}
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
-            <Switch>
-                {/* 只渲染命中的第一个Route */}
-                <Route path="/login" exact component={Auth}></Route>
-                <Route path="/dashboard" component={Dashboard}></Route>
-                <Redirect to="/dashboard"></Redirect>
-            </Switch>
+            <div>
+                <AuthRoute></AuthRoute>
+                <Route path="/boss" component={Boss}></Route>
+                <Route path="/login" component={Login}></Route>
+                <Route path="/register" component={Register}></Route>
+            </div>
         </BrowserRouter>
     </Provider>
 ), document.getElementById('root'))
