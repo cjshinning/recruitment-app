@@ -1,7 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import {Card,WhiteSpace,WingBlank} from 'antd-mobile'
-import { spawn } from 'child_process';
+import {connect} from 'react-redux'
+import {Card,WingBlank} from 'antd-mobile'
+import {getUserList} from '../../redux/chatuser.redux'
+
+@connect(
+    state=>state.chatuser,
+    {getUserList}
+)
 
 class Boss extends React.Component{
     constructor(){
@@ -24,7 +30,7 @@ class Boss extends React.Component{
         const Body = Card.Body
         return (
             <WingBlank>
-                {this.state.data.map(v=>(
+                {this.props.userList.map(v=>(
                     v.avatar?<Card key={v._id}>
                         <Header
                             title={v.user}
