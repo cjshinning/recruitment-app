@@ -23,14 +23,7 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     window.devToolsExtension?window.devToolsExtension():()=>{}
 ))
-// console.log(store.getState())
 
-// function Boss(){
-//     return <h2>boss页面</h2>
-// }
-// function Dashboard(){
-//     return <h2>Dashboard</h2>
-// }
 // boss genius me msg 4个页面
 ReactDOM.render((
     <Provider store={store}>
